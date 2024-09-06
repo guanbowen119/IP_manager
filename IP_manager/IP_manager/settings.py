@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.verifications.apps.VerificationsConfig'
+    'apps.verifications.apps.VerificationsConfig',
+    'apps.users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
@@ -76,8 +77,20 @@ WSGI_APPLICATION = 'IP_manager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '127.0.0.1',
+        'PORT': 3306,
+        'USER': 'guanbowen',
+        'PASSWORD': '040119GBW',
+        'NAME': 'meiduo_mall'
+    },
+    'slave': {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '127.0.0.1',
+        'PORT': 8306,
+        'USER': 'guanbowen',
+        'PASSWORD': '040119GBW',
+        'NAME': 'meiduo_mall'
     }
 }
 
@@ -182,3 +195,6 @@ LOGGING = {
         },
     }
 }
+
+# 修改用户模型配置，覆盖django自带的
+AUTH_USER_MODEL = 'users.User'
