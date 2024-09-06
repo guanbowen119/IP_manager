@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.verifications.apps.VerificationsConfig',
+    'apps.devices.apps.DevicesConfig',
     'apps.users.apps.UsersConfig'
 ]
 
@@ -82,7 +82,7 @@ DATABASES = {
         'PORT': 3306,
         'USER': 'guanbowen',
         'PASSWORD': '040119GBW',
-        'NAME': 'meiduo_mall'
+        'NAME': 'ip_manager'
     },
     'slave': {
         'ENGINE': 'django.db.backends.mysql',
@@ -90,7 +90,7 @@ DATABASES = {
         'PORT': 8306,
         'USER': 'guanbowen',
         'PASSWORD': '040119GBW',
-        'NAME': 'meiduo_mall'
+        'NAME': 'ip_manager'
     }
 }
 

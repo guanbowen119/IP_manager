@@ -1,12 +1,15 @@
 from django.http import JsonResponse
 from django.views import View
 
-from apps.verifications.utils import generate_token
+from apps.devices.utils import generate_token
 from utils.get_client_ip import get_client_ip
+from utils.views import LoginRequiredJSONMixin
 
 
-class BindView(View):
-
+class BindView(LoginRequiredJSONMixin, View):
+    """
+    申请绑定邮箱和设备
+    """
     @staticmethod
     def post(request):
         client_ip = get_client_ip(request)
@@ -14,7 +17,10 @@ class BindView(View):
         return JsonResponse({"status": "success", "token": token})
 
 
-class VerifyView(View):
+class VerifyView(LoginRequiredJSONMixin, View):
+    """
+    绑定邮箱和设备
+    """
     @staticmethod
     def post(request):
         import json

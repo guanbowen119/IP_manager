@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class VerificationsConfig(AppConfig):
+class DevicesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.verifications'
+    name = 'apps.devices'

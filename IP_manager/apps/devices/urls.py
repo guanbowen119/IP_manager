@@ -1,6 +1,6 @@
 from django.urls import path
 
-from apps.verifications.views import BindView, VerifyView
+from apps.devices.views import BindView, VerifyView
 
 urlpatterns = [
     path('bind/', BindView.as_view()),
