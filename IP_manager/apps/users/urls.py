@@ -1,7 +1,7 @@
 from django.urls import path
 
-from apps.devices.views import
+from apps.users.views import LoginView
 
 urlpatterns = [
-
+    path('devices/<username>/login', LoginView.as_view())
 ]
