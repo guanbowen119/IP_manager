@@ -94,6 +94,7 @@ DATABASES = {
         'NAME': 'ip_manager'
     }
 }
+DATABASE_ROUTERS = ['utils.db_router.MasterSlaveDBRouter']
 
 
 # Password validation
