@@ -31,10 +31,10 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         redis_cli = get_redis_connection('code')
         redis_sms_code = redis_cli.get(mobile)
-        # if redis_sms_code is None:
-        #     raise ValidationError(message='短信验证码过期')
-        # elif sms_code != redis_sms_code.decode():
-        #     raise ValidationError(message='短信验证码错误')
+        if redis_sms_code is None:
+            raise ValidationError(message='短信验证码过期')
+        elif sms_code != redis_sms_code.decode():
+            raise ValidationError(message='短信验证码错误')
 
         user = authenticate(username=attrs.get('username'), password=attrs.get('password'))
 

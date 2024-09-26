@@ -6,4 +6,4 @@ class LoginRequiredJSONMixin(LoginRequiredMixin):
 
     @staticmethod
     def handle_no_permission(**kwargs):
-        return JsonResponse({'code': 400, 'errmsg': '没有登陆'})
+        return JsonResponse({'errmsg': '没有登陆'})
