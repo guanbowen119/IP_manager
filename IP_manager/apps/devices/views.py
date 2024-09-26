@@ -61,5 +61,11 @@ class VerifyView(GenericAPIView):
         return Response({"status": "success", "message": "Device bound successfully"}, status=status.HTTP_200_OK)
 
 
-class DeviceListDeleteAPIView(ListAPIView, DestroyAPIView):
-    queryset = Device.objects.all()
+class DeviceListAPIView(GenericAPIView):
+    serializer_class = DeviceModelSerializer
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def get(self, request):
+        data = self.get_serializer(request.user.devices, many=True).data
+        return Response(data, status=status.HTTP_200_OK)
