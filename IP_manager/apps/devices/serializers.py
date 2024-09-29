@@ -7,3 +7,8 @@ class DeviceModelSerializer(ModelSerializer):
     class Meta:
         model = Device
         fields = '__all__'
+        extra_kwargs = {
+            'user': {
+                'write_only': True,
+            }
+        }
