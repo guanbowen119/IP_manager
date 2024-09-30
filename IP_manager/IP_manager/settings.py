@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.devices.apps.DevicesConfig',
     'apps.users.apps.UsersConfig',
     'apps.verifications.apps.VerificationsConfig',
+    'apps.oauth.apps.OauthConfig',
     'corsheaders',
     'rest_framework',
     # 'rest_framework_simplejwt',
@@ -268,3 +269,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication'
     )
 }
+
+LARK_APP_ID = "cli_a673a786b333900d"
+LARK_APP_SECRET = "nLsSGsQVv5hP5S9SMgHJRb4CA5Z8uL4Z"

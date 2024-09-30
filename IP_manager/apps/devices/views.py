@@ -54,7 +54,6 @@ class VerifyGenericAPIView(GenericAPIView):
             return Response({'status': 'error', 'message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
         else:
             serializer.save()
-            pass
 
         return Response({"status": "success", "message": "Device bound successfully"}, status=status.HTTP_200_OK)
 

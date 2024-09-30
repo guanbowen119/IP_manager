@@ -26,12 +26,12 @@ class LoginView(APIView):
         if not all([mobile, sms_code]):
             return Response({'errmsg': '参数不全'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # redis_cli = get_redis_connection('code')
-        # redis_image_code = redis_cli.get(mobile)
-        # if redis_image_code is None:
-        #     return Response({'errmsg': '短信验证码过期'}, status=status.HTTP_400_BAD_REQUEST)
-        # elif sms_code != redis_image_code.decode():
-        #     return Response({'errmsg': '短信验证码错误'}, status=status.HTTP_400_BAD_REQUEST)
+        redis_cli = get_redis_connection('code')
+        redis_image_code = redis_cli.get(mobile)
+        if redis_image_code is None:
+            return Response({'errmsg': '短信验证码过期'}, status=status.HTTP_400_BAD_REQUEST)
+        elif sms_code != redis_image_code.decode():
+            return Response({'errmsg': '短信验证码错误'}, status=status.HTTP_400_BAD_REQUEST)
 
         User.USERNAME_FIELD = 'mobile'
         user = authenticate(username=mobile, password=mobile)
